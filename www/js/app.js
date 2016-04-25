@@ -3,9 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ngCordova'])
+var oBapp = angular.module('starter', ['ionic', 'ngCordova'])
+// var db = new  --- later for database
 
-.run(function($ionicPlatform) {
+oBapp.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,8 +23,23 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
     }
   });
 })
-
-app.controller('MainCtrl', function($scope, $cordovaCamera) {
+imageApp.config(function($stateProvider, $stateRouterProvider) {
+  $stateProvider
+    .state("login", {
+      url: "/login",
+      templateUrl: "templates/login.html"
+      controller: "loginController"
+      cache: false
+    })
+    .state("secure", {
+      url: "/secure",
+      templateUrl: "templates/secure.html",
+      controller: "SecureController"
+    });
+    $urlRouterProvider.otherwise("/login");
+});
+// this appears to take photos :D
+oBapp.controller('MainCtrl', function($scope, $cordovaCamera) {
   $scope.takeImage = function() {
       var options = {
           quality: 80,
