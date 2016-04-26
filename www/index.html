@@ -19,36 +19,54 @@
 <script src="js/ng-cordova.min.js"></script>
 <script src="cordova.js"></script>
 
-<!-- script in aws & angular? -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.15/angular2.min.js"></script>
 
 <!-- your app's js -->
 <script src="js/app.js"></script>
 </head>
 <body ng-app="starter">
 
+<!-- navigation from routing -->
   <ion-pane>
-
     <ion-nav-bar class="bar-stable"></ion-nav-bar>
     <ion-nav-view></ion-nav-view>
 
-    <ion-content ng-controller="MainCtrl">
-      <img n g-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="250 " height="250" style="display: block; margin: 0 auto;"/><br/>
-      <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br/>
-      <div class="list ">
+<!-- begin content -->
+    <ion-content ng-controller="pictureCtrl">
+      <div class="bar bar-header bar-dark">
+        <h1 class="title">New Entry</h1>
+      </div>
+<!-- start card -->
+      <div class="list card">
+      
+      <img ng-src="{{pictureUrl}}" width="200 " height="200" style="margin: 0 auto;"><br>
+<!-- form fields -->
+        <label class="item item-input">
+          <span class="input-label">Gender:</span>
+          <input type="text" name="name" value="...">
+        </label>
         <label class="item item-input">
           <span class="input-label">First Name:</span>
-          <input type="text" name="name" value="John"/>
+          <input type="text" name="name" value="...">
         </label>
         <label class="item item-input">
           <span class="input-label">Last Name:</span>
-          <input type="text" name="name" value="Doe"/>
+          <input type="text" name="name" value="...">
         </label>
         <label class="item item-input">
           <span class="input-label">Age:</span>
-          <input type="text" name="birth" value="01.01.1988"/>
+          <input type="text" name="birth" value="XX.XX.XXXX">
         </label>
-
-      </ion-content>
+        <label class="item item-input">
+          <span class="input-label">Last Seen:</span>
+          <input type="text" name="birth" value="Location..">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Safe and Well:</span>
+          <input type="text" name="birth" value="Notes..">
+        </label>
+      </div></ion-content>
+<!-- end of content -->
 
     </ion-pane>
   </body>
